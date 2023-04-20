@@ -10,7 +10,11 @@ class DBHelper:
         try:
             cursor.execute("create table users(username UNIQUE,password)")
         except sqlite3.OperationalError:
-            print("Table already exists, continuing with previous data.")
+            print("Table users already exists, continuing with previous data.")
+        try:
+            cursor.execute("create table services(name UNIQUE,secret_key)")
+        except sqlite3.OperationalError:
+            print("Table services already exists, continuing with previous data.")
             
     # Requests handling fetching
     def fetch_user(self, username):
@@ -52,3 +56,5 @@ class DBHelper:
         cursor = self.conn.cursor()
         query = cursor.execute("delete from users where username ='hedi' or username='kawkaw'")
         self.conn.commit()
+    def close(self):
+        self.conn.close()
