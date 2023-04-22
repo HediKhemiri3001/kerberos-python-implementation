@@ -1,11 +1,11 @@
 import sqlite3
 from user import User
-
+from service import Service
 
 
 class DBHelper:
     def __init__(self):
-        self.conn = sqlite3.connect("./db/users.db")
+        self.conn = sqlite3.connect("./db/users.db",check_same_thread=False)
         cursor = self.conn.cursor()
         try:
             cursor.execute("create table users(username UNIQUE,password)")
@@ -30,7 +30,8 @@ class DBHelper:
         cursor = self.conn.cursor()
         query = cursor.execute("select * from services where services.name = "+"'"+service_name+"'")
         service_name, secret_key = query.fetchone()
-        return service_name, secret_key
+        service = Service(service_name, secret_key)
+        return service
 
     # Requests handling insertions
     def add_user(self, username, password):
