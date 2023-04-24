@@ -36,7 +36,7 @@ def authentication_server():
 
             return jsonify(response)
         else:
-            print(payload)
+            response = {"status":404, "payload": {"message": "User not found."}}
 
 @app.route('/ticket', methods=['POST'])
 def ticket_granting_server():
@@ -49,8 +49,12 @@ def ticket_granting_server():
             response = {"status":200, "payload": payload}
 
             return jsonify(response)
-        else:
-            print(payload)
+        elif status == -1:
+            response = {"status": 404, "payload": {"message":payload}}
+            return jsonify(response)
+        elif status == -2:
+            response = {"status": 304, "payload": {"message":payload}}
+            return jsonify(response)
 
 
 if __name__ == '__main__':

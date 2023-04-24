@@ -7,7 +7,7 @@ In the context of cosolidating knowledge and lessons about cyber security, this 
 - [x] Database helper functions.
 - [x] AuthenticationService of the KDC
 - [x] TicketGrantingService of the KDC
-- [x] Master process for the KDC
+- [x] Master API for the KDC
 - [ ] Create the service that's being protected
 - [ ] Implement client side script to access this ressource service if authenticated.
 

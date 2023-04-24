@@ -1,6 +1,6 @@
 import sqlite3
-from user import User
-from service import Service
+from user_entity import User
+from service_entity import Service
 
 
 class DBHelper:
@@ -20,18 +20,23 @@ class DBHelper:
     def fetch_user(self, username):
         cursor = self.conn.cursor()
         query = cursor.execute("select * from users where users.username = "+"'"+username+"'")
-        username, password = query.fetchone()
-        user = User(username, password)
-        if user is None:
-            return -1, "User dosen't exist."
-        else :
+        try:
+            username, password = query.fetchone()
+            user = User(username, password)
             return 1, user
+        except TypeError:
+            return -1, "User dosen't exist."
+
     def fetch_service(self, service_name):
         cursor = self.conn.cursor()
         query = cursor.execute("select * from services where services.name = "+"'"+service_name+"'")
-        service_name, secret_key = query.fetchone()
-        service = Service(service_name, secret_key)
-        return service
+        try:
+            service_name, secret_key = query.fetchone()
+            service = Service(service_name, secret_key)
+            return 1,service
+        except TypeError:
+            return -1, "Service not found."
+    
 
     # Requests handling insertions
     def add_user(self, username, password):
