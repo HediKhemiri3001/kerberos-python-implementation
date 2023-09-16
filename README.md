@@ -11,6 +11,8 @@ So in conclusion, we have 3 main Principals which are :
  2. The KDC: represented as a Flask API that exposes 2 endpoints /authenticate and /ticket which each act as one of the 2 main services requires by a KDC. Note that these endpoints can be seperated into 2 seperate APIs if we want to.
  3. The protected ressource: in this repo is represented by an API that only returns the requested values if the client requesting is successfully authenticated.
 
+Following this architecture:
+![Image explaining the architecture](https://media.geeksforgeeks.org/wp-content/uploads/20190711134228/Capture6663.jpg)
 ## Credits 
 This repository was elaborated by:
  - KHEMIRI Mohamed Hedi
