@@ -13,6 +13,9 @@ So in conclusion, we have 3 main Principals which are :
 
 Following this architecture:
 ![Image explaining the architecture](https://media.geeksforgeeks.org/wp-content/uploads/20190711134228/Capture6663.jpg)
+
+Except that the server and Kerberos entities are both declared in this repository.
+This is a working project and I envision many improvements whenever We find the time.
 ## Credits 
 This repository was elaborated by:
  - KHEMIRI Mohamed Hedi
